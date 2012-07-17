@@ -9,14 +9,14 @@ version = u''
 release = u''
 
 source_suffix = '.rst'
-master_doc = 'contents'
+master_doc = 'index'
 language = 'zh_CN'
 exclude_patterns = ['_build']
 extensions = ['sphinx.ext.pngmath']
 pygments_style = 'sphinx'
 
 html_title = u'Django 最佳实践'
-html_theme = 'yeetheme'
+html_theme = 'haiku'
 html_theme_path = ['../../../templates/sphinx', ]
 htmlhelp_basename = 'django-best-practices'
 html_add_permalinks = None
@@ -26,6 +26,8 @@ latex_documents = [
   ('index', 'django-best-practices.tex', u'Django 最佳实践',
    u'', 'manual'),
 ]
+
+exclude_patterns = ['README.rst']
 
 
 #Add sponsorship and project information to the template context.
@@ -37,4 +39,3 @@ context = {
 }
 
 html_context = context
-

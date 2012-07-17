@@ -3,6 +3,19 @@
 Django 最佳实践 - 中文版 (2009-06-17)
 =========================================
 
+:注意:
+
+    注意：英文指南 (`django-best-practices`_) 很久没有更新，这份译文的内容可能已经过时，仅用来参考，勿用来作为开发准则。
+
+:翻译:
+    .. line-block::
+
+        `brantyoung <http://yangyubo.com>`_
+
+:项目主页:
+    - `django-best-practices`_
+    - `django-best-practices - 中文版 <https://github.com/brantyoung/zh-django-best-practices>`_
+
 .. _readme:
 
 译者 (yospaly) 前言
@@ -12,26 +25,13 @@ Django 最佳实践 - 中文版 (2009-06-17)
 
 这份文档由一系列准则组成, 围绕这如何创建便于维护, 代码干净, 结构清晰, 方便复用, 易于部署的 Django 项目. 对于初学者, 它是一份不可多得指南, 如果不知道从何下手, 按照文档说做能很快规范起来; 对于经验丰富 Django 达人, 它也有一定的参考价值, 可以据此来创建自己的最佳实践准则.
 
-遗憾的是本人理工科出身, 水平有限, 翻译中规中矩, 只能勉强表达出原文传递的信息. 还有小部分尚不解其意 (文中有备注)  :)
-
 原文是多页面方式, 不过 **实践** 每个规则的内容并不太多, 打散成多页面反而浏览不方便. 所以我把它们全合并到单个页面中, 除此之外, 没做其它改动.
 
 原文和译文的源文件均使用 `reStructuredText <http://docutils.sourceforge.net/>`__ 格式, 可以用 `Sphinx <http://sphinx.pocoo.org>`__ 转换成 HTML 等格式的文档.
 
-+ `中文最新版本在线文档 <http://yangyubo.com/django-best-practices/>`__
-
-+ `中文版项目首页 <http://code.google.com/p/zh-django-best-practices/>`__
-
-+ `作者的项目声明 <http://lincolnloop.com/blog/2009/apr/9/django-best-practices/>`__
-
-+ `英文最新版本在线文档 <http://lincolnloop.com/django-best-practices/>`__
++ `中文最新版本在线文档 <https://github.com/brantyoung/zh-django-best-practices/blob/master/readme.rst/>`__
 
 .. note:: 中文版力求保持和英文版同步更新. 当前版本 2009-06-17 11:32:35
-
-.. _django-reusable-app-docs: http://github.com/ericholscher/django-reusable-app-docs/
-
-.. _django-best-practices: http://github.com/lincolnloop/django-best-practices/
-
 
 .. _best_practices:
 
@@ -197,7 +197,7 @@ Managers
 
 + {% block extra_head %}
 
-我认为这是个非常有用的区块, 很多人已经以某种方式在使用了. 
+我认为这是个非常有用的区块, 很多人已经以某种方式在使用了.
 很多页面经常需要在 HTML 文档头添加些信息, 比如 RSS 源, Javascript,
 CSS, 以及别的应该放在文档头的信息. 你可以, 也很可能将会, 定义另外专门的区块
 (比如前面的 title 区块) 来添加文档头的其它部分的信息.
@@ -207,7 +207,7 @@ CSS, 以及别的应该放在文档头的信息. 你可以, 也很可能将会, 
 
 这个 tag 用来包含页面的整个 body 部分. 这使得你在 app 中创建的页面
 能够替换整个页面内容, 不仅仅是正文内容. 这种做法虽不常见, 但当你需要时,
-它确实是一个非常方便的 tag. 你可能还没注意到, 我一直尽可能的使 tag 
+它确实是一个非常方便的 tag. 你可能还没注意到, 我一直尽可能的使 tag
 名字和 HTML 标签名称保持一致.
 
 
@@ -231,7 +231,7 @@ CSS, 以及别的应该放在文档头的信息. 你可以, 也很可能将会, 
 
 用来指定 content 区块的 "title". 比如 blog 的标题. 也可以用来
 包含 content 内的导航 (译注: 比如提纲), 或其它类似的东东. 大致都是些
-页面中并非主要内容的东东. 我不知道这个区块是否应该放到 `content` tag 内, 
+页面中并非主要内容的东东. 我不知道这个区块是否应该放到 `content` tag 内,
 并且对应于前面建议的 `content` tag, 是不是还需要一个 `main_content` 区块.
 
 + {% block header %} {% block footer %}
@@ -310,7 +310,7 @@ URLs
                  form_class=RegistrationForm
                  template_name='registration/registration_form.html',
                  extra_context=None):
-    
+
 
 
 .. _projects:
@@ -381,14 +381,14 @@ Project 模块
     DIRNAME = os.path.dirname(__file__)
 
     MEDIA_ROOT = os.path.join(DIRNAME, 'static')
-    
+
 具体环境相关的设置使用 ``local_settings.py`` 文件, 并在 ``settings.py`` 文件结尾导入它.
 
 .. sourcecode:: python
 
     try:
         from local_settings import *
-    except ImportError:   
+    except ImportError:
         pass
 
 
@@ -434,7 +434,7 @@ Project 的环境初始化
     cd mysite.com
     pip install -E . -r path/to/requirements.txt
     source bin/activate
-    
+
 .. tip:: 方便起见, 你可以在你的 ``virtualenv`` 根目录中创建 Django project 的符号链接. 符号链接的名字无所谓, 因为你的 project 已经在 Python 搜索路径中. 通过给你所有的 projects 起同样的符号链接名, 你可以使用一些 `方便的 bash 函数以节省时间 <http://gist.github.com/91456>`_.
 
 .. index:: pip, requirements.txt
@@ -472,16 +472,16 @@ Nginx
 
 .. literalinclude:: /examples/nginx.conf
     :language: nginx
-    
+
 .. rubric:: 它都做些什么?
 
 第一段告诉 Nginx 去哪里找托管了 Django 站点的服务器. 第二段把所有来自 ``www.domain.com`` 的请求重定向到 ``domain.com``, 这样所有资源就都只有一个 URL 能被访问到. 最后一段承担了所有工作. 它告诉 Nginx 检查 ``/var/www/domain.com`` 中是否存在被请求的文件. 如果存在, 它返回该文件, 否则, 它将把请求转发给 Django 站点.
 
 .. warning:: yospaly 注
-    
+
     以下涉及 Apache 的部分均未作翻译, 我们强烈建议使用 Nginx/Lighttpd + SCGI/FastCGI/HTTP 的方式, 尽量不要使用繁琐的 Apache + mod_wsgi.
 
-.. index:: 
+.. index::
     pair: Nginx; SSL
 
 SSL
@@ -491,13 +491,13 @@ Another benefit to running a frontend server is lightweight SSL proxying. Rather
 
 .. literalinclude:: /examples/nginx_ssl.conf
     :language: nginx
-    
+
 You can include this code at the bottom of your non-SSL configuration file.
 
-.. tip:: For SSL-aware Django sites like `Satchmo <http://www.satchmoproject.com>`_, you'll need to "trick" the site into thinking incoming requests are coming in via SSL, but this is simple enough to do with `a small addition to the WSGI script <http://gist.github.com/78416>`_ we discuss below. 
+.. tip:: For SSL-aware Django sites like `Satchmo <http://www.satchmoproject.com>`_, you'll need to "trick" the site into thinking incoming requests are coming in via SSL, but this is simple enough to do with `a small addition to the WSGI script <http://gist.github.com/78416>`_ we discuss below.
 
 .. index:: Apache
-    pair: Apache; mod_wsgi 
+    pair: Apache; mod_wsgi
     pair: Apache; Worker MPM
     pair: Apache; Listen
 
@@ -516,16 +516,15 @@ With Apache up and running, you'll need an Apache configuration and WSGI script 
 
 .. literalinclude:: /examples/apache.conf
     :language: apache
-    
+
 .. index::
     pair: mod_wsgi; maximum-requests
-    
+
 .. tip:: In a perfect world, your app would never leak memory and you can leave out the ``maximum-requests`` directive. In our experience, setting this to a high number is nice to keep Apache's memory usage in check.
 
 .. warning:: This will default to a single process with 15 threads. Django is not "officially" thread safe and some external libraries (notably a couple required for ``django.contrib.gis``) are known to not be thread safe. If needed the ``threads`` and ``processes`` arguments can be adjusted accordingly.
-    
+
 It links to the WSGI script within the project directory. The script is just a few lines of Python to properly setup our environment.
 
 .. literalinclude:: /examples/django.wsgi
     :language: python
-
